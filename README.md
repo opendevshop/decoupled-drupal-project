@@ -44,3 +44,141 @@ to `npm` to the `post-install-cmd` section of composer.json.
 `bower-asset` packages. This means that [any NPM or Bower package](https://asset-packagist.org/)
  can be installed with composer instead of NPM.
 * Provides branches with example structure for your projects.
+
+
+
+## Decoupled Drupal Models
+
+There are many ways to connect a separate front-end project to your Drupal codebase.
+
+### Method #1: Shared Repository
+
+This is the simplest method. Create a composer-based Drupal codebase and add a 
+folder for your second app to live.
+
+Then you an hook `composer install` to run `npm install` or your desired command by adding a `post-install-hook`.
+
+If you put your second codebase in the `app` folder. Add the following
+to your `composer.json` file:
+
+```json
+{
+  "scripts": {
+        "post-install-cmd": [
+            "cd app && npm install"
+        ]
+  }
+}
+```
+
+This way, all of the source code is populated with one command: `composer install`.
+ 
+### Method #2: Separate Repositories installed with Scripts
+
+There's nothing wrong with just cloning the repo into the desired location after `composer install`...
+
+```json
+{
+    "scripts": {
+        "post-install-cmd": [
+            "git clone git@github.com:my-organization/web-front-end.git app",
+            "cd app && git checkout v1.0.0 && npm install"
+        ]
+    }
+}
+```
+
+However, you should be sure to checkout a specific version (tag) so that 
+changes to the branch won't affect this build.
+
+### Method #3: Separate Repositories installed with Composer
+
+With composer, you can require a separate git repository even if it is not on 
+Packagist by creating a pseudo-package right in your `composer.json` file:
+
+```json
+{
+    "require": {
+        "our-website/front-end":  "dev-master"
+     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "mywebsite-com/web",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/department-of-veterans-affairs/vets-website",
+                    "type": "git",
+                    "reference": "35deea6e8afaf58b9b4e3ee23fe2e0134c18d2e2"
+                }
+            }
+        }
+    ]
+}
+```
+
+Then, your `web` project will installed into your `vendor` directory just like
+any other composer package. It will be set to use the exact version mentioned 
+in the "reference" field.
+
+To make it easier to find, a symlink can be added to your `web` project in the 
+vendor directory. The symlink can be added to the git repo.
+
+```shell script
+ln -s vendor/mywebsite-com/web app
+git commit app -m 'Adding symlink to web front-end.'
+```
+### Method #4: Separate Repositories with Packagist
+
+If your project is public, or you are willing to pay for a private packagist,
+you can leverage the power of composer dependency management to link your 
+projects.
+
+#### Create a composer.json file in the Front-end project and Submit to Packagist or NPM.
+
+Composer and NPM are dependency management tools. They allow you to specify 
+exactly what version of different components to use so that you can be sure
+they work together.
+
+By submitting your project to Packagist or NPM (and using `composer require npm-asset/project-name`)
+you free yourself from having to manually update the git reference.
+
+Add a basic `composer.json` file to your front-end codebase and visit https://packagist.org
+to sign up and Submit a Package. New git pushes to the web front-end will automatically update packagist.org, 
+which provides the information to composer.
+
+#### Front-end Project
+From: https://github.com/department-of-veterans-affairs/vets-website/blob/master/composer.json:
+
+```json
+{
+    "name": "mywebsite-com/web",
+    "description": "Front-end for mywebsite.com. This repo contains the code to statically generate mywebsite.com.",
+    "type": "node-project",
+    "require": {
+    },
+    "license": "CC0-1.0",
+    "minimum-stability": "dev",
+    "extra": {
+        "installer-types": ["node-project"],
+        "installer-paths": {
+            "web/": [
+                "type:node-project"
+            ]
+        }
+    }
+}
+
+```
+
+#### Drupal Project
+Once packagist or NPM has the new package, you can add it to your Drupal
+codebase with: 
+
+```shell script
+composer require mywebsite-com/web
+```
+
+Packagist will sort out the latest version for you.
+
