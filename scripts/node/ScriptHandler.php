@@ -23,5 +23,6 @@ class ScriptHandler {
   public static function checkNodeNpmVersion(Event $event) {
     $event->getIo()->write('node: ' . (new Process('which node && node --version'))->mustRun()->getOutput());
     $event->getIo()->write('npm: ' . (new Process('which npm && npm --version'))->mustRun()->getOutput());
+    $event->getIo()->write('NODE_PATH: ' . (new Process('echo $NODE_PATH'))->mustRun()->getOutput());
   }
 }
