@@ -91,7 +91,7 @@
         },
         "mouf": {
             "nodejs": {
-                "version": "~0.12",
+                "version": "~12.13",
                 "targetDir": "vendor/nodejs/nodejs",
                 "forceLocal": true,
                 "includeBinInPath": true

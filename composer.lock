@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40dc93a8986bc3f7ef3dd38eb6651439",
+    "content-hash": "3742ae92d24d1df42b26e21edff47ccb",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1029,28 +1029,30 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8"
+                "reference": "e17f069ede36f7534b95adec71910ed1b49c74ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/1febd6c3ef84253d7c815bed85fc622ad207a9f8",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/e17f069ede36f7534b95adec71910ed1b49c74ea",
+                "reference": "e17f069ede36f7534b95adec71910ed1b49c74ea",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
+                "php": "^7.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.5"
+                "doctrine/coding-standard": "^6.0",
+                "phpstan/phpstan": "^0.11.8",
+                "phpunit/phpunit": "^8.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -1064,12 +1066,12 @@
             ],
             "authors": [
                 {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
                 },
                 {
                     "name": "Johannes Schmitt",
@@ -1085,7 +1087,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-06-08T11:03:04+00:00"
+            "time": "2019-07-30T19:33:28+00:00"
         },
         {
             "name": "doctrine/persistence",
@@ -1546,16 +1548,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.7.8",
+            "version": "8.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "476f491b85306c09101106d9b66a5dbe73c21bf0"
+                "reference": "881e60062ea86a8f6809a298f09f56afd20b3cf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/476f491b85306c09101106d9b66a5dbe73c21bf0",
-                "reference": "476f491b85306c09101106d9b66a5dbe73c21bf0",
+                "url": "https://api.github.com/repos/drupal/core/zipball/881e60062ea86a8f6809a298f09f56afd20b3cf3",
+                "reference": "881e60062ea86a8f6809a298f09f56afd20b3cf3",
                 "shasum": ""
             },
             "require": {
@@ -1787,7 +1789,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2019-10-02T18:41:30+00:00"
+            "time": "2019-11-06T18:00:38+00:00"
         },
         {
             "name": "easyrdf/easyrdf",
@@ -7371,16 +7373,16 @@
         },
         {
             "name": "webflo/drupal-core-require-dev",
-            "version": "8.7.8",
+            "version": "8.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webflo/drupal-core-require-dev.git",
-                "reference": "593123300b3cf9974fa0742282af90fa72ac06fc"
+                "reference": "712de55c6f8220cd1cabb6cf88df1e40595b187e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webflo/drupal-core-require-dev/zipball/593123300b3cf9974fa0742282af90fa72ac06fc",
-                "reference": "593123300b3cf9974fa0742282af90fa72ac06fc",
+                "url": "https://api.github.com/repos/webflo/drupal-core-require-dev/zipball/712de55c6f8220cd1cabb6cf88df1e40595b187e",
+                "reference": "712de55c6f8220cd1cabb6cf88df1e40595b187e",
                 "shasum": ""
             },
             "require": {
@@ -7388,7 +7390,7 @@
                 "behat/mink-goutte-driver": "^1.2",
                 "behat/mink-selenium2-driver": "1.3.x-dev",
                 "drupal/coder": "^8.3.1",
-                "drupal/core": "8.7.8",
+                "drupal/core": "8.7.9",
                 "jcalderonzumba/gastonjs": "^1.0.2",
                 "jcalderonzumba/mink-phantomjs-driver": "^0.3.1",
                 "justinrainbow/json-schema": "^5.2",
@@ -7405,7 +7407,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "require-dev dependencies from drupal/core",
-            "time": "2019-10-02T19:31:42+00:00"
+            "time": "2019-11-06T18:31:43+00:00"
         }
     ],
     "aliases": [],
