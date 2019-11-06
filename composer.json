@@ -1,5 +1,5 @@
 {
-    "name": "provision-ops/decoupled-drupal",
+    "name": "opendevshop/decoupled-drupal-project",
     "description": "Drupal 8 template with a Decoupled front-end.",
     "type": "project",
     "license": "GPL-2.0-or-later",
@@ -41,7 +41,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "bin-path": "bin",
+        "bin-dir": "bin",
         "sort-packages": true
     },
     "autoload": {
