@@ -11,6 +11,7 @@ use Composer\Script\Event;
 use Composer\Semver\Comparator;
 use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Process\Process;
 use Webmozart\PathUtil\Path;
 
 class ScriptHandler {
@@ -97,4 +98,19 @@ class ScriptHandler {
     }
   }
 
+  /**
+   * Drops the user into a bash shell with the path set to the bin-dir.
+   */
+  public static function composerShell() {
+    $env = $_SERVER;
+
+    // @TODO: Why can't $env be used for PS1?
+    $init_file = dirname(__DIR__) . '/bash/composer-prompt.sh';
+    $process = new Process("bash --init-file {$init_file}");
+    $process->setTimeout(null);
+    $process->setEnv($env);
+    $process->setTty(TRUE);
+    $process->run();
+
+  }
 }

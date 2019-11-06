@@ -65,6 +65,9 @@
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
             "DrupalProject\\node\\ScriptHandler::checkNodeNpmVersion"
+        ],
+        "shell": [
+            "DrupalProject\\composer\\ScriptHandler::composerShell"
         ]
     },
     "extra": {
