@@ -12,7 +12,7 @@ First you need to [install composer](https://getcomposer.org/doc/00-intro.md#ins
 After that you can create a new Drupal project with the `composer create-project` command:
 
 ```
-composer create-project opendevshop/decoupled-drupal-project:8.x-dev --no-interaction my-new-site
+composer create-project devshop/decoupled-template:8.x-dev --no-interaction my-new-site
 ```
 
 Then, put the resulting files into a git repository.

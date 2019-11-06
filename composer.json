@@ -1,5 +1,5 @@
 {
-    "name": "opendevshop/decoupled-drupal-project",
+    "name": "devshop/decoupled-template",
     "description": "Drupal 8 template with a Decoupled front-end.",
     "type": "project",
     "license": "GPL-2.0-or-later",
