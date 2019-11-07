@@ -68,6 +68,11 @@
         ],
         "shell": [
             "DrupalProject\\composer\\ScriptHandler::composerShell"
+        ],
+        "deploy": [
+            "drush cache-rebuild",
+            "drush pm-update",
+            "cd app && npm build"
         ]
     },
     "extra": {
