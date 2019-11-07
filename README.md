@@ -181,4 +181,41 @@ composer require mywebsite-com/web
 ```
 
 Packagist will sort out the latest version for you.
+## Serving Decoupled Drupal
 
+### NodeJS 
+
+If your application requires a node server, you can simply configure it to
+load it's content from the folder that the project was installed to. 
+(`app` in our examples.)
+
+Point your Drupal server to your Drupal codebase and your node server to the app. 
+
+### Static Site Generators
+
+Most NodeJS projects don't need to run a node server at all because they are
+static site generators. They create `index.html` files and images and CSS from 
+different sources, including Drupal.
+
+#### Use the Drupal Server
+Since any Drupal server can also serve static HTML and image assets, you can
+tell your app to generate those assets into a folder in the "document root" 
+of the Drupal site.
+
+For example, if your static site generator output it's files to the `/web/static` 
+folder in a Drupal Composer codebase, and you accessed your Drupal site at 
+http://localhost, you would be able to access https://localhost/static to view 
+the generated site.    
+
+#### Absolute link references?
+
+Most static site generators do not handle sub-folder paths. All links to 
+external assets like images, CSS and other pages are typically generated with 
+"absolute" paths. 
+
+This means, if you load a page from https://localhost/static/about, the links 
+might point to `/css/style.css`, which would result in 404 not found.
+
+To work around this, you can use a trick with Drupal's `.htaccess` file:
+
+From  
